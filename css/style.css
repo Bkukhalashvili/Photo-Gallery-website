@@ -1,0 +1,30 @@
+/**************************/
+/* NAVIGATION */
+/**************************/
+
+.main-nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+
+  padding: 4.8rem 1.6rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.main-nav-button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
