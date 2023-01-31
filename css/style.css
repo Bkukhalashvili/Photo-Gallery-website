@@ -28,3 +28,15 @@
   font-weight: bold;
   font-size: 1.6rem;
 }
+/**************************/
+/* SECTION INFO */
+/**************************/
+.section-inf {
+  width: 74rem;
+  margin: 0 auto;
+  padding: 13.5rem 0;
+}
+.info-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
