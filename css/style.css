@@ -3,6 +3,7 @@
 /**************************/
 .header {
   padding: 3.2rem 1.5rem 0 1.5rem;
+  margin-bottom: 0;
 }
 
 .main-nav-list {
@@ -57,11 +58,11 @@
 
   transition: all 0.2s ease-in;
 
-  background-color: crimson;
+  /* background-color: crimson; */
 }
 
 .info-appear {
-  padding: 13.5rem 0 12rem 0;
+  padding: 10.5rem 0 9rem 0;
 
   /* makes container visible */
   opacity: 1;
@@ -114,6 +115,7 @@
 
 .section-categories {
   margin-top: 4.5rem;
+  /* margin: 4.5rem 0; */
   padding: 0 1.5rem;
   transition: all 0.2s ease-in;
   /* background-color: blueviolet; */
@@ -121,6 +123,7 @@
 
 .categories-slide-down {
   transform: translateY(44.48rem);
+  /* transform: translateY(38.48rem); */
 }
 
 .categories-gallery {
@@ -168,4 +171,40 @@
   grid-column: span 1;
   grid-row: span 1;
   background-image: url("https://images.ctfassets.net/rcsshemzsz70/4PncN2PrmMISQ8k0ewkUuC/220c3a97caa07dc3e19a968ad3ea582b/01.jpg?w=1200");
+}
+
+/**************************/
+/* FOOTER */
+/**************************/
+.footer {
+  padding: 4.5rem 0 3.2rem 0;
+
+  transition: all 0.2s ease-in;
+}
+
+.footer-slide-down {
+  transform: translateY(44.48rem);
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-icons-list {
+  list-style: none;
+  display: flex;
+  gap: 2.4rem;
+  justify-content: center;
+  padding-bottom: 0.4rem;
+}
+
+.footer-link:link,
+.footer-link:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+.copyright {
+  font-size: 1.2rem;
+  font-weight: 500;
 }
