@@ -142,12 +142,15 @@
   min-height: 300px;
   overflow: hidden;
   background-color: darkcyan;
-  filter: brightness(85%);
+}
+
+.gallery-item-link div {
+  filter: brightness(80%);
 
   transition: all 0.3s;
 }
 
-.categories-gallery-item:hover {
+.gallery-item-link div:hover {
   filter: brightness(100%);
   transform: scale(1.01);
 }
@@ -199,17 +202,24 @@
 .item9 {
   grid-column: span 1;
   grid-row: span 1;
-  background-image: url("https://images.ctfassets.net/rcsshemzsz70/2vefysMUcgMG02KyyQsGs4/fbb81d9756f3c3c2cb9b675849ac0cae/fuel1.jpg?w=1200");
+  background-image: url("https://images.ctfassets.net/rcsshemzsz70/6BTcJVMFzyisuSWCkiqqeo/a8e5d80ee98125e39692f25a839deb80/Photo09_6_2.jpg?w=1200");
 }
 
 .categories-title {
   font-size: 1.8rem;
   font-weight: 700;
   position: absolute;
-  z-index: 999;
-  color: crimson;
+  z-index: 9999;
+  color: white;
+  background-color: black;
+  padding: 0.4rem 0.8rem;
   left: 1.6rem;
   bottom: 2.8rem;
+}
+
+.categories-title:hover + div {
+  filter: brightness(100%);
+  transform: scale(1.01);
 }
 
 /**************************/
