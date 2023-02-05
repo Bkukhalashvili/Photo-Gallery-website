@@ -172,6 +172,26 @@
   grid-row: span 1;
   background-image: url("https://images.ctfassets.net/rcsshemzsz70/4PncN2PrmMISQ8k0ewkUuC/220c3a97caa07dc3e19a968ad3ea582b/01.jpg?w=1200");
 }
+.item6 {
+  grid-column: span 1;
+  grid-row: span 1;
+  background-image: url("https://images.ctfassets.net/rcsshemzsz70/64owFuZyhiE6OkuWOmWmEY/1dab355f85ffdf97a5f93598d069d40e/000021.jpg?w=1200");
+}
+.item7 {
+  grid-column: span 1;
+  grid-row: span 1;
+  background-image: url("https://images.ctfassets.net/rcsshemzsz70/BSL4WpGyjuWo08OgsGMWK/2d3811dfa46b5a193d04677fc566e612/000019_2.JPG?w=1200");
+}
+.item8 {
+  grid-column: span 1;
+  grid-row: span 1;
+  background-image: url("https://images.ctfassets.net/rcsshemzsz70/nyUQaAATJuqWCoog2mOMI/0cc24d68f66cb7339b99ede911c6b717/000014.jpg?w=1200");
+}
+.item9 {
+  grid-column: span 1;
+  grid-row: span 1;
+  background-image: url("https://images.ctfassets.net/rcsshemzsz70/2vefysMUcgMG02KyyQsGs4/fbb81d9756f3c3c2cb9b675849ac0cae/fuel1.jpg?w=1200");
+}
 
 /**************************/
 /* FOOTER */
