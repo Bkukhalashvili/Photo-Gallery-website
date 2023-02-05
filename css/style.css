@@ -133,6 +133,7 @@
 }
 
 .categories-gallery-item {
+  position: relative;
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -191,6 +192,16 @@
   grid-column: span 1;
   grid-row: span 1;
   background-image: url("https://images.ctfassets.net/rcsshemzsz70/2vefysMUcgMG02KyyQsGs4/fbb81d9756f3c3c2cb9b675849ac0cae/fuel1.jpg?w=1200");
+}
+
+.categories-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  position: absolute;
+  z-index: 999;
+  color: crimson;
+  left: 1.6rem;
+  bottom: 2.8rem;
 }
 
 /**************************/
