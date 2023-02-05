@@ -142,6 +142,14 @@
   min-height: 300px;
   overflow: hidden;
   background-color: darkcyan;
+  filter: brightness(85%);
+
+  transition: all 0.3s;
+}
+
+.categories-gallery-item:hover {
+  filter: brightness(100%);
+  transform: scale(1.01);
 }
 
 .item1 {
