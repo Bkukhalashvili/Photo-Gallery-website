@@ -2,10 +2,11 @@ const apiKey = config.API_KEY;
 
 const galleryContainerEl = document.querySelector(".gallery-container");
 const galleryPageTitle = document.querySelector("title");
-// const baseUrl = document.URL;
+const baseUrl = document.URL;
 
 let page_num = 1;
-// const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
+const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
+galleryPageTitle.innerHTML += ` ${searchQuery}`;
 
 function displayImages(response) {
   response.photos.forEach((image) => {
@@ -39,4 +40,4 @@ async function SearchPhotos(query, page_num) {
   displayImages(response);
 }
 
-SearchPhotos("tokyo", page_num);
+SearchPhotos(searchQuery, page_num);
