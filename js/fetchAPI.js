@@ -1,24 +1,32 @@
 const apiKey = config.API_KEY;
-
+const style = (node, styles) =>
+  Object.keys(styles).forEach((key) => (node.style[key] = styles[key]));
 const galleryContainerEl = document.querySelector(".gallery-container");
 const galleryPageTitle = document.querySelector("title");
+const headingEl = document.querySelector(".heading");
 const baseUrl = document.URL;
 
 let page_num = 1;
 const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
 galleryPageTitle.innerHTML += ` ${searchQuery}`;
+headingEl.innerHTML = searchQuery;
 
 function displayImages(response) {
   response.photos.forEach((image) => {
     const galleryItem = document.createElement("figure");
     galleryItem.className = "gallery-item";
 
-    const galleryPhoto = document.createElement("img");
-    galleryPhoto.className = "gallery-photo";
-    galleryPhoto.src = image.src.large;
-    galleryPhoto.alt = image.alt;
+    const item = document.createElement("div");
+    item.className = "item";
+    item.setAttribute("style", `background-image: url(${image.src.large})`);
 
-    galleryItem.append(galleryPhoto);
+    // const galleryPhoto = document.createElement("img");
+    // galleryPhoto.className = "gallery-photo";
+    // galleryPhoto.src = image.src.large;
+    // galleryPhoto.alt = image.alt;
+
+    // galleryItem.append(galleryPhoto);
+    galleryItem.append(item);
     galleryContainerEl.append(galleryItem);
   });
 }

@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/gallery-style.css" />
     <link rel="stylesheet" href="css/general.css" />
 
     <script
@@ -27,11 +27,95 @@
     <title>gallery &HorizontalLine;</title>
   </head>
   <body>
-    <section class="section-gallery">
-      <div class="gallery-container"></div>
-    </section>
+    <header class="header">
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li><a href="index.html" class="main-nav-link">Anon</a></li>
+          <li>
+            <button class="main-nav-button">Information</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="section-info">
+        <div class="info">
+          <div class="info-container">
+            <div class="info-content">
+              <!-- 01 -->
+              <div class="equipment-col">
+                <p class="info-heading">equipment</p>
+                <ul class="info-equipment-list">
+                  <li><p>&mdash; Sony A6300</p></li>
+                  <li><p>&mdash; Google Pixel 5</p></li>
+                  <li><p>&mdash; Nikon F-601 Auto Focus</p></li>
+                  <li><p>&mdash; Nikon D3100</p></li>
+                  <li><p>&mdash; Olympus OM-10</p></li>
+                </ul>
+              </div>
+
+              <!-- 02 -->
+              <div class="about-col">
+                <p class="info-heading">about</p>
+                <p>Fine Art (BA Hons) Photographer living in Tbilisi.</p>
+              </div>
+
+              <!-- 03 -->
+              <div class="social-col">
+                <p class="info-heading">social</p>
+                <ul class="info-icons-list">
+                  <ul>
+                    <a href="#" class="info-link">
+                      <ion-icon
+                        class="social-icon"
+                        name="logo-instagram"
+                      ></ion-icon>
+                    </a>
+                  </ul>
+                  <ul>
+                    <a href="#" class="info-link">
+                      <ion-icon
+                        class="social-icon"
+                        name="logo-twitter"
+                      ></ion-icon>
+                    </a>
+                  </ul>
+                </ul>
+              </div>
+              <!--  -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-gallery">
+        <h1 class="heading">E</h1>
+        <div class="gallery-container"></div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-content">
+        <ul class="footer-icons-list">
+          <li>
+            <a href="#" class="footer-link"
+              ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
+            ></a>
+          </li>
+          <li>
+            <a href="#" class="footer-link"
+              ><ion-icon class="social-icon" name="logo-twitter"></ion-icon
+            ></a>
+          </li>
+        </ul>
+
+        <p class="copyright">
+          Copyright &copy; <span class="year">2027,</span> Anon Gallery.
+        </p>
+      </div>
+    </footer>
 
     <script src="js/config.js"></script>
     <script src="js/fetchAPI.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
