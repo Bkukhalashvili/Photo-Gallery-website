@@ -40,7 +40,7 @@ body {
 /**************************/
 /* NAVIGATION */
 /**************************/
-/* .header {
+.header {
   padding: 3.2rem 1.5rem 0 1.5rem;
   margin-bottom: 0;
 }
@@ -71,12 +71,12 @@ body {
   font-weight: bold;
   font-size: 1.6rem;
   letter-spacing: inherit;
-} */
+}
 
 /**************************/
 /* SECTION INFO */
 /**************************/
-/* .section-info {
+.section-info {
   padding: 0 1.5rem;
 }
 
@@ -146,15 +146,19 @@ body {
 .social-icon {
   width: 2.6rem;
   height: 2.6rem;
-} */
+}
 
 /**************************/
 /* FOOTER */
 /**************************/
-/* .footer {
+.footer {
   padding: 4.5rem 0 3.2rem 0;
 
   transition: all 0.2s ease-in;
+}
+
+.footer-slide-down {
+  transform: translateY(44.48rem);
 }
 
 .footer-content {
@@ -178,4 +182,4 @@ body {
 .copyright {
   font-size: 1.2rem;
   font-weight: 500;
-} */
+}
