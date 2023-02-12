@@ -21,14 +21,14 @@
   padding-bottom: 1.5rem;
 }
 
-.gallery-container {
+.photo-gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   gap: 1.5rem;
 }
 
-.item {
+.gallery-item {
   height: 100%;
   width: 100%;
   min-height: 300px;

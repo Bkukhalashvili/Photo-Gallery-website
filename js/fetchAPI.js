@@ -1,7 +1,7 @@
 const apiKey = config.API_KEY;
 const style = (node, styles) =>
   Object.keys(styles).forEach((key) => (node.style[key] = styles[key]));
-const galleryContainerEl = document.querySelector(".gallery-container");
+const photoGalleryEl = document.querySelector(".photo-gallery");
 const galleryPageTitle = document.querySelector("title");
 const headingEl = document.querySelector(".heading");
 const baseUrl = document.URL;
@@ -13,21 +13,18 @@ headingEl.innerHTML = searchQuery;
 
 function displayImages(response) {
   response.photos.forEach((image) => {
-    const galleryItem = document.createElement("figure");
+    const galleryItemContainer = document.createElement("figure");
+    galleryItemContainer.className = "gallery-item-container";
+
+    const galleryItem = document.createElement("div");
     galleryItem.className = "gallery-item";
+    galleryItem.setAttribute(
+      "style",
+      `background-image: url(${image.src.large})`
+    );
 
-    const item = document.createElement("div");
-    item.className = "item";
-    item.setAttribute("style", `background-image: url(${image.src.large})`);
-
-    // const galleryPhoto = document.createElement("img");
-    // galleryPhoto.className = "gallery-photo";
-    // galleryPhoto.src = image.src.large;
-    // galleryPhoto.alt = image.alt;
-
-    // galleryItem.append(galleryPhoto);
-    galleryItem.append(item);
-    galleryContainerEl.append(galleryItem);
+    galleryItemContainer.append(galleryItem);
+    photoGalleryEl.append(galleryItemContainer);
   });
 }
 
