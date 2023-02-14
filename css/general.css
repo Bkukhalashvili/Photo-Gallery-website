@@ -58,7 +58,7 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   color: inherit;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 1.6rem;
 }
 
@@ -68,7 +68,7 @@ body {
   color: inherit;
   cursor: pointer;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 1.6rem;
   letter-spacing: inherit;
 }

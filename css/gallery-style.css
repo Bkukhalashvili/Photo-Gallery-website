@@ -2,8 +2,8 @@
 /* SECTION GALLERY */
 /**************************/
 .section-gallery {
+  /* margin-top: 1rem; */
   margin-top: 4.5rem;
-  /* margin: 4.5rem 0; */
   padding: 0 1.5rem;
   transition: all 0.2s ease-in;
   /* background-color: blueviolet; */
@@ -18,7 +18,10 @@
 
 .heading {
   text-align: center;
-  padding-bottom: 1.5rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding-bottom: 1.6rem;
 }
 
 .photo-gallery {
@@ -36,4 +39,12 @@
   background-position: center center;
   background-repeat: no-repeat;
   overflow: hidden;
+
+  filter: brightness(80%);
+  transition: all 0.3s;
+}
+
+.gallery-item:hover {
+  filter: brightness(100%);
+  transform: scale(1.01);
 }
