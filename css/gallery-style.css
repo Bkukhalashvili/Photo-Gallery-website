@@ -40,11 +40,32 @@
   background-repeat: no-repeat;
   overflow: hidden;
 
-  filter: brightness(80%);
+  /* filter: brightness(80%); */
+  cursor: pointer;
   transition: all 0.3s;
 }
 
 .gallery-item:hover {
-  filter: brightness(100%);
+  /* filter: brightness(100%); */
   transform: scale(1.01);
+}
+
+.item1 {
+  grid-column: span 2;
+}
+
+.item7 {
+  grid-row: span 2;
+}
+
+.item11 {
+  grid-row: span 2;
+}
+
+.item12 {
+  grid-column: span 2;
+}
+
+.item13 {
+  grid-row: span 2;
 }

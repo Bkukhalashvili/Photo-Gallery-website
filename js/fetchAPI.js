@@ -13,22 +13,33 @@ const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
 galleryPageTitle.innerHTML += ` ${searchQuery}`;
 headingEl.innerHTML = searchQuery;
 
+// class name for galleryItemContainer
+let itemNum = 1;
 // creates elements and displays fetched data (images)
 function displayImages(response) {
   response.photos.forEach((image) => {
     const galleryItemContainer = document.createElement("figure");
     galleryItemContainer.className = "gallery-item-container";
+    galleryItemContainer.className = `item${itemNum}`;
+
+    const galleryItemLink = document.createElement("a");
+    galleryItemLink.className = "gallery-item-link";
+    galleryItemLink.href = image.url;
+    galleryItemLink.target = "_blank";
 
     const galleryItem = document.createElement("div");
     galleryItem.className = "gallery-item";
     galleryItem.title = image.alt;
     galleryItem.setAttribute(
       "style",
-      `background-image: url(${image.src.large})`
+      `background-image: url(${image.src.large2x})`
     );
 
-    galleryItemContainer.append(galleryItem);
+    galleryItemLink.append(galleryItem);
+    galleryItemContainer.append(galleryItemLink);
     photoGalleryEl.append(galleryItemContainer);
+
+    itemNum++;
   });
 }
 
