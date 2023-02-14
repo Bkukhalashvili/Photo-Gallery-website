@@ -46,52 +46,52 @@
 
 .item1 {
   grid-column: span 2;
-  grid-row: span 2;
-  background-image: url(https://images.ctfassets.net/rcsshemzsz70/7F8SpV2yxorVocslZfTz6v/3435788298e05d41a1b1234dbf8ad7f2/DSC02199.jpg?w=1200);
+  grid-row: span 1;
+  background-image: url("https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 
 .item2 {
   grid-column: span 1;
   grid-row: span 1;
   height: 500px;
-  background-image: url("https://images.ctfassets.net/rcsshemzsz70/2kpGKxHhS27Tl7AJR9zh50/05aac40a832cac1c0fc67ca4117d912c/DSC00347_1.jpg?w=1200");
+  background-image: url("https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 .item3 {
   grid-column: span 1;
   grid-row: span 1;
   height: 500px;
-  background-image: url("https://images.ctfassets.net/rcsshemzsz70/5XqFLcJmQEsoiu2we24q84/b9aee5be1f9755bdd57c5e8933b595e1/000019__1_.jpg?w=1200");
+  background-image: url("https://images.pexels.com/photos/547494/pexels-photo-547494.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 .item4 {
   grid-column: span 1;
   grid-row: span 1;
-  background-image: url("https://images.ctfassets.net/rcsshemzsz70/1UTZ8yWh3i2sOaiiYc282K/3e9c29060c8942c8b1c89470fc8f83ff/000030.jpg?w=1200");
+  background-image: url("https://images.pexels.com/photos/4046386/pexels-photo-4046386.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 
 .item5 {
   grid-column: span 1;
   grid-row: span 1;
-  background-image: url("https://images.ctfassets.net/rcsshemzsz70/4PncN2PrmMISQ8k0ewkUuC/220c3a97caa07dc3e19a968ad3ea582b/01.jpg?w=1200");
+  background-image: url("https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 .item6 {
   grid-column: span 1;
   grid-row: span 1;
-  background-image: url("https://images.ctfassets.net/rcsshemzsz70/64owFuZyhiE6OkuWOmWmEY/1dab355f85ffdf97a5f93598d069d40e/000021.jpg?w=1200");
+  background-image: url("https://images.pexels.com/photos/2309270/pexels-photo-2309270.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 .item7 {
   grid-column: span 1;
-  grid-row: span 1;
-  background-image: url("https://images.ctfassets.net/rcsshemzsz70/BSL4WpGyjuWo08OgsGMWK/2d3811dfa46b5a193d04677fc566e612/000019_2.JPG?w=1200");
+  grid-row: span 2;
+  background-image: url("https://images.pexels.com/photos/2048865/pexels-photo-2048865.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 .item8 {
   grid-column: span 1;
   grid-row: span 1;
-  background-image: url("https://images.ctfassets.net/rcsshemzsz70/nyUQaAATJuqWCoog2mOMI/0cc24d68f66cb7339b99ede911c6b717/000014.jpg?w=1200");
+  background-image: url("https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 .item9 {
-  grid-column: span 1;
+  grid-column: span 2;
   grid-row: span 1;
-  background-image: url("https://images.ctfassets.net/rcsshemzsz70/6BTcJVMFzyisuSWCkiqqeo/a8e5d80ee98125e39692f25a839deb80/Photo09_6_2.jpg?w=1200");
+  background-image: url("https://images.pexels.com/photos/416024/pexels-photo-416024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 
 .categories-title {
