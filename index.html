@@ -28,11 +28,9 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
 
-    <script defer src="js/script.js"></script>
-
     <title>Anon &verbar; Photography</title>
   </head>
-  <body>
+  <body onload="switcher(0)">
     <header class="header">
       <nav class="main-nav">
         <ul class="main-nav-list">
@@ -96,60 +94,7 @@
 
       <section class="section-categories">
         <div class="categories-gallery">
-          <figure class="categories-gallery-item | item1">
-            <a href="gallery.html?Japan" class="gallery-item-link">
-              <p class="categories-title">Japan</p>
-              <div class="item1 | categories-gallery-item"></div>
-            </a>
-          </figure>
-          <figure class="categories-gallery-item | item2 backg">
-            <a href="gallery.html?Norway" class="gallery-item-link">
-              <p class="categories-title">Norway</p>
-              <div class="item2 | categories-gallery-item"></div>
-            </a>
-          </figure>
-          <figure class="categories-gallery-item | item3">
-            <a href="gallery.html?Germany" class="gallery-item-link">
-              <p class="categories-title">Germany</p>
-              <div class="item3 | categories-gallery-item"></div>
-            </a>
-          </figure>
-          <figure class="categories-gallery-item | item4">
-            <a href="gallery.html?Italy" class="gallery-item-link">
-              <p class="categories-title">Italy</p>
-              <div class="item4 | categories-gallery-item"></div>
-            </a>
-          </figure>
-          <figure class="categories-gallery-item | item5">
-            <a href="gallery.html?Greece" class="gallery-item-link">
-              <p class="categories-title">Greece</p>
-              <div class="item5 | categories-gallery-item"></div>
-            </a>
-          </figure>
-          <figure class="categories-gallery-item | item6">
-            <a href="gallery.html?France" class="gallery-item-link">
-              <p class="categories-title">France</p>
-              <div class="item6 | categories-gallery-item"></div>
-            </a>
-          </figure>
-          <figure class="categories-gallery-item | item7">
-            <a href="gallery.html?Turkey" class="gallery-item-link">
-              <p class="categories-title">Turkey</p>
-              <div class="item7 | categories-gallery-item"></div>
-            </a>
-          </figure>
-          <figure class="categories-gallery-item | item8">
-            <a href="gallery.html?Spain" class="gallery-item-link">
-              <p class="categories-title">Spain</p>
-              <div class="item8 | categories-gallery-item"></div>
-            </a>
-          </figure>
-          <figure class="categories-gallery-item | item9">
-            <a href="gallery.html?Denmark" class="gallery-item-link">
-              <p class="categories-title">Denmark</p>
-              <div class="item9 | categories-gallery-item"></div>
-            </a>
-          </figure>
+          <!-- Fetched Data -->
         </div>
       </section>
     </main>
@@ -174,5 +119,9 @@
         </p>
       </div>
     </footer>
+
+    <script src="js/config.js"></script>
+    <script defer src="js/script.js"></script>
+    <script defer src="js/fetchAPI.js"></script>
   </body>
 </html>
