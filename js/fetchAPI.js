@@ -14,8 +14,11 @@ const baseUrl = document.URL;
 // gets query parameter from  websites url for search query (e.g., Japan, Norway, ...)
 const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
 // assign query parameter from url to gallery page title and heading
-galleryPageTitle.innerHTML += ` ${searchQuery}`;
-if (headingEl) headingEl.innerHTML = searchQuery;
+
+if (headingEl) {
+  galleryPageTitle.innerHTML += ` ${searchQuery}`;
+  headingEl.innerHTML = searchQuery;
+}
 
 // class name for galleryItemContainer
 let itemNum = 1;
