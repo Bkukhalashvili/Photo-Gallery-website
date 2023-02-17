@@ -50,6 +50,8 @@ function displayGalleryImages(response) {
   });
 }
 
+let categoriesData = [];
+
 // class name for categoriesGalleryItemNum
 let CategoriesItemNum = 1;
 // creates elements and displays fetched data (images) on index page
@@ -78,6 +80,7 @@ function displayCategoryImages(response, query) {
     categoriesItemContainer.append(categoriesItemLink);
     categoriesGalleryEl.append(categoriesItemContainer);
 
+    categoriesData.push(response);
     CategoriesItemNum++;
   });
 }
@@ -88,6 +91,7 @@ function displayCategoryImages(response, query) {
 async function switcher(page) {
   if (page === 0) {
     // add new list item here to create new category
+    // doesn't work for now
     let list = [
       "Japan",
       "Norway",
@@ -99,8 +103,17 @@ async function switcher(page) {
       "Spain",
       "Denmark",
     ];
-    for (let i = 0; i < list.length; i++) {
-      await SearchPhotos(list[i], 1);
+    if (localStorage.categoriesData) {
+      const categoriesData = JSON.parse(localStorage.getItem("categoriesData"));
+
+      for (let i = 0; i < categoriesData.length; i++) {
+        displayCategoryImages(categoriesData[i], list[i]);
+      }
+    } else {
+      for (let i = 0; i < list.length; i++) {
+        await SearchPhotos(list[i], 1);
+      }
+      localStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
     }
   } else if (page === 1) {
     SearchPhotos(searchQuery);
