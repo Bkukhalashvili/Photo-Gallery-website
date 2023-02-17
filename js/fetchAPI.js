@@ -55,32 +55,28 @@ let CategoriesItemNum = 1;
 // creates elements and displays fetched data (images) on index page
 function displayCategoryImages(response, query) {
   response.photos.forEach((image) => {
-    const categoriesGalleryItemContainer = document.createElement("figure");
-    categoriesGalleryItemContainer.className =
-      "categories-gallery-item-container";
-    categoriesGalleryItemContainer.className = `item${CategoriesItemNum}`;
+    const categoriesItemContainer = document.createElement("figure");
+    categoriesItemContainer.className = "categories-item-container";
+    categoriesItemContainer.className = `item${CategoriesItemNum}`;
 
-    const categoriesGalleryItemLink = document.createElement("a");
-    categoriesGalleryItemLink.className = "categories-gallery-item-link";
-    categoriesGalleryItemLink.href = `gallery.html?${query}`;
+    const categoriesItemLink = document.createElement("a");
+    categoriesItemLink.className = "categories-item-link";
+    categoriesItemLink.href = `gallery.html?${query}`;
 
-    const categoriesGalleryItemTitle = document.createElement("p");
-    categoriesGalleryItemTitle.className = "categories-gallery-item-title";
-    categoriesGalleryItemTitle.innerHTML = query;
+    const categoriesItemTitle = document.createElement("p");
+    categoriesItemTitle.className = "categories-item-title";
+    categoriesItemTitle.innerHTML = query;
 
-    const categoriesGalleryItem = document.createElement("div");
-    categoriesGalleryItem.className = "categories-gallery-item";
-    categoriesGalleryItem.setAttribute(
+    const categoriesItem = document.createElement("div");
+    categoriesItem.className = "categories-item";
+    categoriesItem.setAttribute(
       "style",
       `background-image: url(${image.src.large2x})`
     );
 
-    categoriesGalleryItemLink.append(
-      categoriesGalleryItemTitle,
-      categoriesGalleryItem
-    );
-    categoriesGalleryItemContainer.append(categoriesGalleryItemLink);
-    categoriesGalleryEl.append(categoriesGalleryItemContainer);
+    categoriesItemLink.append(categoriesItemTitle, categoriesItem);
+    categoriesItemContainer.append(categoriesItemLink);
+    categoriesGalleryEl.append(categoriesItemContainer);
 
     CategoriesItemNum++;
   });

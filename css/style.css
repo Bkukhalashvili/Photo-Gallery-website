@@ -44,10 +44,10 @@
   transform: scale(1.01);
 } */
 
-.categories-gallery-item-link {
+.categories-item-link {
   position: relative;
 }
-.categories-gallery-item {
+.categories-item {
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -61,7 +61,7 @@
   transition: all 0.3s;
 }
 
-.categories-gallery-item:hover {
+.categories-item:hover {
   filter: brightness(100%);
   transform: scale(1.01);
 }
@@ -105,7 +105,7 @@
   grid-row: span 1;
 }
 
-.categories-gallery-item-title {
+.categories-item-title {
   position: absolute;
   padding: 0.4rem 0.8rem;
   background-color: black;
@@ -118,7 +118,7 @@
   z-index: 1;
 }
 
-.categories-gallery-item-title:hover + div {
+.categories-item-title:hover + div {
   filter: brightness(100%);
   transform: scale(1.01);
 }
