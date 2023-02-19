@@ -13,8 +13,8 @@ const baseUrl = document.URL;
 
 // gets query parameter from  websites url for search query (e.g., Japan, Norway, ...)
 const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
-// assign query parameter from url to gallery page title and heading
 
+// assign query parameter from url to gallery page title and heading
 if (headingEl) {
   galleryPageTitle.innerHTML += ` ${searchQuery}`;
   headingEl.innerHTML = searchQuery;
@@ -50,6 +50,7 @@ function displayGalleryImages(response) {
   });
 }
 
+// list where fetched data for index page gets stored so it can be saved on local storage
 let categoriesData = [];
 
 // class name for categoriesGalleryItemNum
@@ -80,7 +81,9 @@ function displayCategoryImages(response, query) {
     categoriesItemContainer.append(categoriesItemLink);
     categoriesGalleryEl.append(categoriesItemContainer);
 
+    // adds fetched data to list
     categoriesData.push(response);
+
     CategoriesItemNum++;
   });
 }
@@ -89,6 +92,7 @@ function displayCategoryImages(response, query) {
 // if its 0 creates category list and fetches data for it
 // if its 1  fetches data for that searchQuery
 async function switcher(page) {
+  // index page
   if (page === 0) {
     // add new list item here to create new category
     let list = [
@@ -116,8 +120,10 @@ async function switcher(page) {
       for (let i = 0; i < list.length; i++) {
         await SearchPhotos(list[i], 1);
       }
+      // saves list(with fetched data for index page) to local storage
       localStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
     }
+    // gallery page
   } else if (page === 1) {
     SearchPhotos(searchQuery, 15);
   }
