@@ -119,40 +119,26 @@ async function switcher(page) {
       localStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
     }
   } else if (page === 1) {
-    SearchPhotos(searchQuery);
+    SearchPhotos(searchQuery, 15);
   }
 }
 
 // gets data
 async function SearchPhotos(query, quantity) {
-  // quantity if images to fetch
-  if (quantity === 1) {
-    const data = await fetch(
-      `https://api.pexels.com/v1/search?query=${query}&per_page=${quantity}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          Authorization: apiKey,
-        },
-      }
-    );
-    const response = await data.json();
+  const data = await fetch(
+    `https://api.pexels.com/v1/search?query=${query}&per_page=${quantity}`,
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: apiKey,
+      },
+    }
+  );
+  const response = await data.json();
 
-    displayCategoryImages(response, query);
-  } else {
-    const data = await fetch(
-      `https://api.pexels.com/v1/search?query=${query}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          Authorization: apiKey,
-        },
-      }
-    );
-    const response = await data.json();
-
-    displayGalleryImages(response);
-  }
+  // quantity of images to fetch
+  quantity === 1
+    ? displayCategoryImages(response, query)
+    : displayGalleryImages(response);
 }
