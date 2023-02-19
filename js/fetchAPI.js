@@ -103,42 +103,21 @@ async function switcher(page) {
       "Denmark",
     ];
 
-    if (localStorage.categoriesData) {
-      const localCategoriesData = JSON.parse(
-        localStorage.getItem("categoriesData")
-      );
+    const localCategoriesData = JSON.parse(
+      localStorage.getItem("categoriesData")
+    );
 
-      if (localCategoriesData.length === list.length) {
-        for (let i = 0; i < localCategoriesData.length; i++) {
-          displayCategoryImages(localCategoriesData[i], list[i]);
-        }
-        console.log("here");
-      } else {
-        localStorage.clear();
-
-        for (let i = 0; i < list.length; i++) {
-          await SearchPhotos(list[i], 1);
-        }
-        localStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
+    if (localCategoriesData && localCategoriesData.length === list.length) {
+      for (let i = 0; i < localCategoriesData.length; i++) {
+        displayCategoryImages(localCategoriesData[i], list[i]);
       }
     } else {
+      localStorage.clear();
       for (let i = 0; i < list.length; i++) {
         await SearchPhotos(list[i], 1);
       }
       localStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
     }
-    // if (localStorage.categoriesData) {
-    //   const categoriesData = JSON.parse(localStorage.getItem("categoriesData"));
-
-    //   for (let i = 0; i < categoriesData.length; i++) {
-    //     displayCategoryImages(categoriesData[i], list[i]);
-    //   }
-    // } else {
-    //   for (let i = 0; i < list.length; i++) {
-    //     await SearchPhotos(list[i], 1);
-    //   }
-    //   localStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
-    // }
   } else if (page === 1) {
     SearchPhotos(searchQuery);
   }
