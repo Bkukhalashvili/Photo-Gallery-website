@@ -16,11 +16,11 @@
   /* transform: translateY(38.48rem); */
 }
 
-.heading {
+.gallery-heading {
   text-align: center;
   font-size: 1.6rem;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 900;
   padding-bottom: 1.6rem;
 }
 

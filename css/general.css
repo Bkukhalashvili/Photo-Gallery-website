@@ -28,6 +28,18 @@ body {
   color: #fff;
 }
 
+.social-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+
+  transition: all 0.3s;
+}
+
+.social-icon:hover {
+  color: #ccc;
+  transform: scale(1.05);
+}
+
 /* HELPER/SETTINGS CLASSES */
 .uppercase {
   text-transform: uppercase;
@@ -59,7 +71,7 @@ body {
   text-transform: uppercase;
   color: inherit;
   font-weight: 900;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .main-nav-button {
@@ -114,7 +126,7 @@ body {
 .info-content {
   display: grid;
   grid-template-columns: 0.75fr 0.75fr 0.5fr;
-  font-weight: normal;
+  font-weight: 300;
   font-size: 1.4rem;
   /* background-color: brown; */
 }
@@ -142,10 +154,6 @@ body {
 .info-link:visited {
   text-decoration: none;
   color: #fff;
-}
-.social-icon {
-  width: 2.6rem;
-  height: 2.6rem;
 }
 
 /**************************/

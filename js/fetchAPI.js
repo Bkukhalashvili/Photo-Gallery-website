@@ -6,7 +6,7 @@ const categoriesGalleryEl = document.querySelector(".categories-gallery");
 // gallery page
 const photoGalleryEl = document.querySelector(".photo-gallery");
 const galleryPageTitle = document.querySelector("title");
-const headingEl = document.querySelector(".heading");
+const headingEl = document.querySelector(".gallery-heading");
 
 // returns documents location with added query parameter as a string (gets website url )
 const baseUrl = document.URL;
@@ -109,6 +109,7 @@ const displayCategoryImages = function (response, query) {
 
     const categoriesItem = document.createElement("div");
     categoriesItem.className = "categories-item";
+    categoriesItem.title = image.alt;
     categoriesItem.setAttribute(
       "style",
       `background-image: url(${image.src.large2x})`
