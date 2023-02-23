@@ -25,6 +25,68 @@ let itemNum = 1;
 // list where fetched data for index page gets stored so it can be stored on local storage
 let categoriesData = [];
 
+// creates elements and displays fetched data (images) on index page
+const displayCategoryImages = function (response, query) {
+  response.photos.forEach((image) => {
+    const categoriesItemContainer = document.createElement("figure");
+    categoriesItemContainer.className = "categories-item-container";
+    categoriesItemContainer.className = `item${itemNum}`;
+
+    const categoriesItemLink = document.createElement("a");
+    categoriesItemLink.className = "categories-item-link";
+    categoriesItemLink.href = `gallery.html?${query}`;
+
+    const categoriesItemTitle = document.createElement("p");
+    categoriesItemTitle.className = "categories-item-title";
+    categoriesItemTitle.innerHTML = query;
+
+    const categoriesItem = document.createElement("div");
+    categoriesItem.className = "categories-item";
+    categoriesItem.title = image.alt;
+    categoriesItem.setAttribute(
+      "style",
+      `background-image: url(${image.src.large2x})`
+    );
+
+    categoriesItemLink.append(categoriesItemTitle, categoriesItem);
+    categoriesItemContainer.append(categoriesItemLink);
+    categoriesGalleryEl.append(categoriesItemContainer);
+
+    // adds fetched data to fetched data list so it can be stored on local storage
+    categoriesData.push(response);
+
+    itemNum++;
+  });
+};
+
+// creates elements and displays fetched data (images) on gallery page
+const displayGalleryImages = function (response) {
+  response.photos.forEach((image) => {
+    const galleryItemContainer = document.createElement("figure");
+    galleryItemContainer.className = "gallery-item-container";
+    galleryItemContainer.className = `item${itemNum}`;
+
+    const galleryItemLink = document.createElement("a");
+    galleryItemLink.className = "gallery-item-link";
+    galleryItemLink.href = image.url;
+    galleryItemLink.target = "_blank";
+
+    const galleryItem = document.createElement("div");
+    galleryItem.className = "gallery-item";
+    galleryItem.title = image.alt;
+    galleryItem.setAttribute(
+      "style",
+      `background-image: url(${image.src.large2x})`
+    );
+
+    galleryItemLink.append(galleryItem);
+    galleryItemContainer.append(galleryItemLink);
+    photoGalleryEl.append(galleryItemContainer);
+
+    itemNum++;
+  });
+};
+
 // on load function
 // idex page = 0  gallery page = 1
 // if its 0 creates categories list and fetches data for it
@@ -91,65 +153,3 @@ async function SearchPhotos(query, quantity) {
     ? displayCategoryImages(response, query)
     : displayGalleryImages(response);
 }
-
-// creates elements and displays fetched data (images) on index page
-const displayCategoryImages = function (response, query) {
-  response.photos.forEach((image) => {
-    const categoriesItemContainer = document.createElement("figure");
-    categoriesItemContainer.className = "categories-item-container";
-    categoriesItemContainer.className = `item${itemNum}`;
-
-    const categoriesItemLink = document.createElement("a");
-    categoriesItemLink.className = "categories-item-link";
-    categoriesItemLink.href = `gallery.html?${query}`;
-
-    const categoriesItemTitle = document.createElement("p");
-    categoriesItemTitle.className = "categories-item-title";
-    categoriesItemTitle.innerHTML = query;
-
-    const categoriesItem = document.createElement("div");
-    categoriesItem.className = "categories-item";
-    categoriesItem.title = image.alt;
-    categoriesItem.setAttribute(
-      "style",
-      `background-image: url(${image.src.large2x})`
-    );
-
-    categoriesItemLink.append(categoriesItemTitle, categoriesItem);
-    categoriesItemContainer.append(categoriesItemLink);
-    categoriesGalleryEl.append(categoriesItemContainer);
-
-    // adds fetched data to fetched data list so it can be stored on local storage
-    categoriesData.push(response);
-
-    itemNum++;
-  });
-};
-
-// creates elements and displays fetched data (images) on gallery page
-const displayGalleryImages = function (response) {
-  response.photos.forEach((image) => {
-    const galleryItemContainer = document.createElement("figure");
-    galleryItemContainer.className = "gallery-item-container";
-    galleryItemContainer.className = `item${itemNum}`;
-
-    const galleryItemLink = document.createElement("a");
-    galleryItemLink.className = "gallery-item-link";
-    galleryItemLink.href = image.url;
-    galleryItemLink.target = "_blank";
-
-    const galleryItem = document.createElement("div");
-    galleryItem.className = "gallery-item";
-    galleryItem.title = image.alt;
-    galleryItem.setAttribute(
-      "style",
-      `background-image: url(${image.src.large2x})`
-    );
-
-    galleryItemLink.append(galleryItem);
-    galleryItemContainer.append(galleryItemLink);
-    photoGalleryEl.append(galleryItemContainer);
-
-    itemNum++;
-  });
-};
