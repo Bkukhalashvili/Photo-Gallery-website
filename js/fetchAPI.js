@@ -87,6 +87,10 @@ const displayGalleryImages = function (response) {
   });
 };
 
+// window.onbeforeunload = () => {
+//   localStorage.clear();
+// };
+
 // on load function
 // idex page = 0  gallery page = 1
 // if its 0 creates categories list and fetches data for it
@@ -107,26 +111,26 @@ async function switcher(page) {
       "Denmark",
     ];
 
-    const localCategoriesData = JSON.parse(
-      localStorage.getItem("categoriesData")
+    const sessionCategoriesData = JSON.parse(
+      sessionStorage.getItem("categoriesData")
     );
 
     // checks if data exists on local storage and if its same as categories list
     if (
-      localCategoriesData &&
-      localCategoriesData.length === categoriesList.length
+      sessionCategoriesData &&
+      sessionCategoriesData.length === categoriesList.length
     ) {
-      for (let i = 0; i < localCategoriesData.length; i++) {
-        displayCategoryImages(localCategoriesData[i], categoriesList[i]);
+      for (let i = 0; i < sessionCategoriesData.length; i++) {
+        displayCategoryImages(sessionCategoriesData[i], categoriesList[i]);
       }
       // if it doesn't exist or its not same as categories list, deletes it and creates a new one
     } else {
-      localStorage.clear();
+      sessionStorage.clear();
       for (let i = 0; i < categoriesList.length; i++) {
         await SearchPhotos(categoriesList[i], 1);
       }
       // stores list(with fetched data for index page) to local storage
-      localStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
+      sessionStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
     }
     // gallery page
   } else if (page === 1) {
