@@ -68,3 +68,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+/**************************/
+/* BELOW 471px */
+/**************************/
+
+@media (max-width: 29.4em) {
+  .categories-slide-down {
+    transform: translateY(49.76rem);
+  }
+
+  .footer-slide-down {
+    transform: translateY(49.76rem);
+  }
+}
