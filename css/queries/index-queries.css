@@ -82,3 +82,13 @@
     transform: translateY(49.76rem);
   }
 }
+
+/**************************/
+/* BELOW 412px */
+/**************************/
+
+@media (max-width: 25.8em) {
+  .item1 div {
+    background-position: 90%;
+  }
+}
