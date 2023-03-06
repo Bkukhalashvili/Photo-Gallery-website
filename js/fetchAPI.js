@@ -28,29 +28,13 @@ let categoriesData = [];
 // creates elements and displays fetched data (images) on index page
 const displayCategoryImages = function (response, query) {
   response.photos.forEach((image) => {
-    const categoriesItemContainer = document.createElement("figure");
-    categoriesItemContainer.className = "categories-item-container";
-    categoriesItemContainer.className = `item${itemNum}`;
-
-    const categoriesItemLink = document.createElement("a");
-    categoriesItemLink.className = "categories-item-link";
-    categoriesItemLink.href = `gallery.html?${query}`;
-
-    const categoriesItemTitle = document.createElement("p");
-    categoriesItemTitle.className = "categories-item-title";
-    categoriesItemTitle.innerHTML = query;
-
-    const categoriesItem = document.createElement("div");
-    categoriesItem.className = "categories-item";
-    categoriesItem.title = image.alt;
-    categoriesItem.setAttribute(
-      "style",
-      `background-image: url(${image.src.large2x})`
-    );
-
-    categoriesItemLink.append(categoriesItemTitle, categoriesItem);
-    categoriesItemContainer.append(categoriesItemLink);
-    categoriesGalleryEl.append(categoriesItemContainer);
+    categoriesGalleryEl.innerHTML += `
+    <figure class="categories-item-container item${itemNum}">
+      <a class="categories-item-link" href="gallery.html?${query}">
+        <p class="categories-item-title"> ${query} </p>
+        <div class="categories-item" title="${image.alt}" style="background-image: url(${image.src.large2x})"></div>
+      </a>
+    </figure>`;
 
     // adds fetched data to fetched data list so it can be stored on local storage
     categoriesData.push(response);
@@ -62,34 +46,16 @@ const displayCategoryImages = function (response, query) {
 // creates elements and displays fetched data (images) on gallery page
 const displayGalleryImages = function (response) {
   response.photos.forEach((image) => {
-    const galleryItemContainer = document.createElement("figure");
-    galleryItemContainer.className = "gallery-item-container";
-    galleryItemContainer.className = `item${itemNum}`;
-
-    const galleryItemLink = document.createElement("a");
-    galleryItemLink.className = "gallery-item-link";
-    galleryItemLink.href = image.url;
-    galleryItemLink.target = "_blank";
-
-    const galleryItem = document.createElement("div");
-    galleryItem.className = "gallery-item";
-    galleryItem.title = image.alt;
-    galleryItem.setAttribute(
-      "style",
-      `background-image: url(${image.src.large2x})`
-    );
-
-    galleryItemLink.append(galleryItem);
-    galleryItemContainer.append(galleryItemLink);
-    photoGalleryEl.append(galleryItemContainer);
+    photoGalleryEl.innerHTML += `
+    <figure class="gallery-item-container item${itemNum}">
+      <a class="gallery-item-link" href="${image.url}" target="_blank">
+        <div class="gallery-item" title="${image.alt}" style="background-image: url(${image.src.large2x})"></div>
+      </a>
+    </figure>`;
 
     itemNum++;
   });
 };
-
-// window.onbeforeunload = () => {
-//   localStorage.clear();
-// };
 
 // on load function
 // idex page = 0  gallery page = 1
