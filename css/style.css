@@ -3,6 +3,7 @@
 /**************************/
 
 .section-categories {
+  position: relative;
   /* margin-top: 4.5rem; */
   /* margin: 4.5rem 0; */
   padding: 0 1.5rem;
@@ -121,4 +122,32 @@
 .categories-item-title:hover + div {
   filter: brightness(100%);
   transform: scale(1.01);
+}
+
+.categories-heading {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 900;
+
+  /* hides the container */
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.show {
+  /* makes container visible */
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }

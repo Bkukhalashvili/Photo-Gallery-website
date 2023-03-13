@@ -80,6 +80,9 @@ async function switcher(page) {
     const sessionCategoriesData = JSON.parse(
       sessionStorage.getItem("categoriesData")
     );
+    // shows loading text and hides categories
+    document.querySelector(".categories-heading").classList.toggle("show");
+    categoriesGalleryEl.classList.toggle("hide");
 
     // checks if data exists on local storage and if its same as categories list
     if (
@@ -89,6 +92,12 @@ async function switcher(page) {
       for (let i = 0; i < sessionCategoriesData.length; i++) {
         displayCategoryImages(sessionCategoriesData[i], categoriesList[i]);
       }
+
+      // shows categories and footer and hides loading text
+      categoriesGalleryEl.classList.toggle("show");
+      document.querySelector(".categories-heading").classList.toggle("show");
+      document.querySelector(".footer").classList.toggle("hide");
+
       // if it doesn't exist or its not same as categories list, deletes it and creates a new one
     } else {
       sessionStorage.clear();
@@ -97,6 +106,11 @@ async function switcher(page) {
       }
       // stores list(with fetched data for index page) to local storage
       sessionStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
+
+      // shows categories and footer and hides loading text
+      document.querySelector(".categories-heading").classList.toggle("show");
+      categoriesGalleryEl.classList.toggle("show");
+      document.querySelector(".footer").classList.toggle("hide");
     }
     // gallery page
   } else if (page === 1) {
@@ -106,6 +120,7 @@ async function switcher(page) {
 
 // gets data
 async function SearchPhotos(query, quantity) {
+  console.log("fetch");
   const data = await fetch(
     `https://api.pexels.com/v1/search?query=${query}&per_page=${quantity}`,
     {
