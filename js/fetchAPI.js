@@ -2,6 +2,7 @@ const apiKey = config.API_KEY;
 
 // index page
 const categoriesGalleryEl = document.querySelector(".categories-gallery");
+const categoriesHeadingEl = document.querySelector(".categories-heading");
 
 // gallery page
 const photoGalleryEl = document.querySelector(".photo-gallery");
@@ -57,6 +58,12 @@ const displayGalleryImages = function (response) {
   });
 };
 
+const visibilityToggle = function () {
+  categoriesGalleryEl.classList.toggle("hidden");
+  categoriesHeadingEl.classList.toggle("hidden");
+  footerEl.classList.toggle("hidden");
+};
+
 // on load function
 // idex page = 0  gallery page = 1
 // if its 0 creates categories list and fetches data for it
@@ -80,9 +87,6 @@ async function switcher(page) {
     const sessionCategoriesData = JSON.parse(
       sessionStorage.getItem("categoriesData")
     );
-    // shows loading text and hides categories
-    document.querySelector(".categories-heading").classList.toggle("show");
-    categoriesGalleryEl.classList.toggle("hide");
 
     // checks if data exists on local storage and if its same as categories list
     if (
@@ -93,10 +97,8 @@ async function switcher(page) {
         displayCategoryImages(sessionCategoriesData[i], categoriesList[i]);
       }
 
-      // shows categories and footer and hides loading text
-      categoriesGalleryEl.classList.toggle("show");
-      document.querySelector(".categories-heading").classList.toggle("show");
-      document.querySelector(".footer").classList.toggle("hide");
+      //load data from local storage and shows categories and footer and hides loading text
+      visibilityToggle();
 
       // if it doesn't exist or its not same as categories list, deletes it and creates a new one
     } else {
@@ -107,10 +109,8 @@ async function switcher(page) {
       // stores list(with fetched data for index page) to local storage
       sessionStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
 
-      // shows categories and footer and hides loading text
-      document.querySelector(".categories-heading").classList.toggle("show");
-      categoriesGalleryEl.classList.toggle("show");
-      document.querySelector(".footer").classList.toggle("hide");
+      //load data from server and shows categories and footer and hides loading text
+      visibilityToggle();
     }
     // gallery page
   } else if (page === 1) {

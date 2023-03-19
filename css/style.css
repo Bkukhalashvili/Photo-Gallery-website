@@ -130,24 +130,12 @@
   font-weight: 900;
 
   /* hides the container */
-  opacity: 0;
+  /* opacity: 0;
   pointer-events: none;
-  visibility: hidden;
+  visibility: hidden; */
+
   position: absolute;
   left: 0;
   right: 0;
   text-align: center;
-}
-
-.hide {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
-
-.show {
-  /* makes container visible */
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
 }
