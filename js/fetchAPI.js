@@ -18,13 +18,15 @@ const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
 // assign query parameter from url to gallery page title and heading
 if (headingEl) {
   galleryPageTitle.innerHTML += ` ${searchQuery}`;
-  headingEl.innerHTML = searchQuery;
+  // headingEl.innerHTML = searchQuery;
+  headingEl.innerHTML = "loading...";
 }
 // counter for class name for galleryItemContainer and categoriesItemContainer
 let itemNum = 1;
 
 // list where fetched data for index page gets stored so it can be stored on local storage
 let categoriesData = [];
+let galleryData = [];
 
 // creates elements and displays fetched data (images) on index page
 const displayCategoryImages = function (response, query) {
@@ -54,6 +56,8 @@ const displayGalleryImages = function (response) {
       </a>
     </figure>`;
 
+    galleryData.push(response);
+
     itemNum++;
   });
 };
@@ -62,6 +66,81 @@ const visibilityToggle = function () {
   categoriesGalleryEl.classList.toggle("hidden");
   categoriesHeadingEl.classList.toggle("hidden");
   footerEl.classList.toggle("hidden");
+};
+
+// const loadCategoryData = async function () {
+//   const sessionCategoriesData = JSON.parse(
+//     sessionStorage.getItem("categoriesData")
+//   );
+
+//   let categoriesList = [
+//     "Japan",
+//     "Norway",
+//     "Germany",
+//     "Italy",
+//     "Greece",
+//     "France",
+//     "Turkey",
+//     "Spain",
+//     "Denmark",
+//   ];
+
+//   // checks if data exists on local storage and if its same as categories list
+//   if (
+//     sessionCategoriesData &&
+//     sessionCategoriesData.length === categoriesList.length
+//   ) {
+//     for (let i = 0; i < sessionCategoriesData.length; i++) {
+//       displayCategoryImages(sessionCategoriesData[i], categoriesList[i]);
+//     }
+
+//     //load data from local storage and shows categories and footer and hides loading text
+//     visibilityToggle();
+
+//     // if it doesn't exist or its not same as categories list, deletes it and creates a new one
+//   } else {
+//     sessionStorage.clear();
+//     for (let i = 0; i < categoriesList.length; i++) {
+//       await SearchPhotos(categoriesList[i], 1);
+//     }
+//     // stores list(with fetched data for index page) to local storage
+//     sessionStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
+
+//     //load data from server and shows categories and footer and hides loading text
+//     visibilityToggle();
+//   }
+// };
+
+const loadGalleryData = async function () {
+  const sessionGalleryData = JSON.parse(
+    sessionStorage.getItem(`galleryData${searchQuery}`)
+  );
+
+  if (sessionGalleryData) {
+    for (let i = 0; i < sessionGalleryData.length; i++) {
+      displayGalleryImages(sessionGalleryData[i]);
+    }
+    headingEl.innerHTML = searchQuery;
+  } else {
+    sessionStorage.removeItem(`galleryData${searchQuery}`);
+    await SearchPhotos(searchQuery, 15);
+
+    sessionStorage.setItem(
+      `galleryData${searchQuery}`,
+      JSON.stringify(galleryData)
+    );
+
+    headingEl.innerHTML = searchQuery;
+  }
+
+  // headingEl.innerHTML = "loading...";
+  // await SearchPhotos(searchQuery, 15);
+  // sessionStorage.setItem(
+  //   `galleryData${searchQuery}`,
+  //   JSON.stringify(galleryData)
+  // );
+
+  // headingEl.innerHTML = searchQuery;
 };
 
 // on load function
@@ -114,7 +193,10 @@ async function switcher(page) {
     }
     // gallery page
   } else if (page === 1) {
-    SearchPhotos(searchQuery, 15);
+    // headingEl.innerHTML = "loading...";
+    // await SearchPhotos(searchQuery, 15);
+    // headingEl.innerHTML = searchQuery;
+    loadGalleryData();
   }
 }
 
