@@ -56,7 +56,7 @@ const displayGalleryImages = function (response) {
       </a>
     </figure>`;
 
-    galleryData.push(response);
+    // galleryData.push(response);
 
     itemNum++;
   });
@@ -66,6 +66,17 @@ const visibilityToggle = function () {
   categoriesGalleryEl.classList.toggle("hidden");
   categoriesHeadingEl.classList.toggle("hidden");
   footerEl.classList.toggle("hidden");
+};
+
+const saveDataInSession = async function (query, quantity) {
+  await SearchPhotos(query, quantity);
+
+  quantity === 1
+    ? sessionStorage.setItem(`categoriesData`, JSON.stringify(categoriesData))
+    : sessionStorage.setItem(
+        `galleryData${searchQuery}`,
+        JSON.stringify(galleryData)
+      );
 };
 
 // const loadCategoryData = async function () {
@@ -112,6 +123,14 @@ const visibilityToggle = function () {
 // };
 
 const loadGalleryData = async function () {
+  // await SearchPhotos(searchQuery, 15);
+  // sessionStorage.setItem(
+  //   `galleryData${searchQuery}`,
+  //   JSON.stringify(galleryData)
+  // );
+
+  await saveDataInSession(searchQuery, 15);
+
   const sessionGalleryData = JSON.parse(
     sessionStorage.getItem(`galleryData${searchQuery}`)
   );
@@ -120,18 +139,21 @@ const loadGalleryData = async function () {
     for (let i = 0; i < sessionGalleryData.length; i++) {
       displayGalleryImages(sessionGalleryData[i]);
     }
-    headingEl.innerHTML = searchQuery;
   } else {
     sessionStorage.removeItem(`galleryData${searchQuery}`);
-    await SearchPhotos(searchQuery, 15);
+    // await SearchPhotos(searchQuery, 15);
 
-    sessionStorage.setItem(
-      `galleryData${searchQuery}`,
-      JSON.stringify(galleryData)
-    );
+    // sessionStorage.setItem(
+    //   `galleryData${searchQuery}`,
+    //   JSON.stringify(galleryData)
+    // );
 
-    headingEl.innerHTML = searchQuery;
+    // await saveDataInSession(searchQuery, 15);
+
+    loadGalleryData();
   }
+
+  headingEl.innerHTML = searchQuery;
 
   // headingEl.innerHTML = "loading...";
   // await SearchPhotos(searchQuery, 15);
@@ -139,7 +161,6 @@ const loadGalleryData = async function () {
   //   `galleryData${searchQuery}`,
   //   JSON.stringify(galleryData)
   // );
-
   // headingEl.innerHTML = searchQuery;
 };
 
@@ -214,9 +235,12 @@ async function SearchPhotos(query, quantity) {
     }
   );
   const response = await data.json();
-
-  // quantity of images to fetch
   quantity === 1
     ? displayCategoryImages(response, query)
-    : displayGalleryImages(response);
+    : galleryData.push(response);
+
+  // quantity of images to fetch
+  // quantity === 1
+  //   ? displayCategoryImages(response, query)
+  //   : displayGalleryImages(response);
 }
