@@ -29,7 +29,7 @@ let categoriesData = [];
 let galleryData = [];
 
 // gets data from session storage
-const sessionGalleryData = JSON.parse(
+let sessionGalleryData = JSON.parse(
   sessionStorage.getItem(`galleryData${searchQuery}`)
 );
 
@@ -83,6 +83,9 @@ const saveDataInSession = async function (query, quantity) {
           `galleryData${searchQuery}`,
           JSON.stringify(galleryData)
         );
+    sessionGalleryData = JSON.parse(
+      sessionStorage.getItem(`galleryData${searchQuery}`)
+    );
   }
 };
 
