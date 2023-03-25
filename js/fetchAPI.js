@@ -28,6 +28,11 @@ let itemNum = 1;
 let categoriesData = [];
 let galleryData = [];
 
+// gets data from session storage
+const sessionGalleryData = JSON.parse(
+  sessionStorage.getItem(`galleryData${searchQuery}`)
+);
+
 // creates elements and displays fetched data (images) on index page
 const displayCategoryImages = function (response, query) {
   response.photos.forEach((image) => {
@@ -69,71 +74,20 @@ const visibilityToggle = function () {
 };
 
 const saveDataInSession = async function (query, quantity) {
-  await SearchPhotos(query, quantity);
+  if (!sessionGalleryData) {
+    await SearchPhotos(query, quantity);
 
-  quantity === 1
-    ? sessionStorage.setItem(`categoriesData`, JSON.stringify(categoriesData))
-    : sessionStorage.setItem(
-        `galleryData${searchQuery}`,
-        JSON.stringify(galleryData)
-      );
+    quantity === 1
+      ? sessionStorage.setItem(`categoriesData`, JSON.stringify(categoriesData))
+      : sessionStorage.setItem(
+          `galleryData${searchQuery}`,
+          JSON.stringify(galleryData)
+        );
+  }
 };
 
-// const loadCategoryData = async function () {
-//   const sessionCategoriesData = JSON.parse(
-//     sessionStorage.getItem("categoriesData")
-//   );
-
-//   let categoriesList = [
-//     "Japan",
-//     "Norway",
-//     "Germany",
-//     "Italy",
-//     "Greece",
-//     "France",
-//     "Turkey",
-//     "Spain",
-//     "Denmark",
-//   ];
-
-//   // checks if data exists on local storage and if its same as categories list
-//   if (
-//     sessionCategoriesData &&
-//     sessionCategoriesData.length === categoriesList.length
-//   ) {
-//     for (let i = 0; i < sessionCategoriesData.length; i++) {
-//       displayCategoryImages(sessionCategoriesData[i], categoriesList[i]);
-//     }
-
-//     //load data from local storage and shows categories and footer and hides loading text
-//     visibilityToggle();
-
-//     // if it doesn't exist or its not same as categories list, deletes it and creates a new one
-//   } else {
-//     sessionStorage.clear();
-//     for (let i = 0; i < categoriesList.length; i++) {
-//       await SearchPhotos(categoriesList[i], 1);
-//     }
-//     // stores list(with fetched data for index page) to local storage
-//     sessionStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
-
-//     //load data from server and shows categories and footer and hides loading text
-//     visibilityToggle();
-//   }
-// };
-
 const loadGalleryData = async function () {
-  // await SearchPhotos(searchQuery, 15);
-  // sessionStorage.setItem(
-  //   `galleryData${searchQuery}`,
-  //   JSON.stringify(galleryData)
-  // );
-
   await saveDataInSession(searchQuery, 15);
-
-  const sessionGalleryData = JSON.parse(
-    sessionStorage.getItem(`galleryData${searchQuery}`)
-  );
 
   if (sessionGalleryData) {
     for (let i = 0; i < sessionGalleryData.length; i++) {
@@ -141,27 +95,11 @@ const loadGalleryData = async function () {
     }
   } else {
     sessionStorage.removeItem(`galleryData${searchQuery}`);
-    // await SearchPhotos(searchQuery, 15);
-
-    // sessionStorage.setItem(
-    //   `galleryData${searchQuery}`,
-    //   JSON.stringify(galleryData)
-    // );
-
-    // await saveDataInSession(searchQuery, 15);
 
     loadGalleryData();
   }
 
   headingEl.innerHTML = searchQuery;
-
-  // headingEl.innerHTML = "loading...";
-  // await SearchPhotos(searchQuery, 15);
-  // sessionStorage.setItem(
-  //   `galleryData${searchQuery}`,
-  //   JSON.stringify(galleryData)
-  // );
-  // headingEl.innerHTML = searchQuery;
 };
 
 // on load function
