@@ -2,18 +2,12 @@
 /* SECTION GALLERY */
 /**************************/
 .section-gallery {
-  /* margin-top: 1rem; */
-  /* margin-top: 4.5rem; */
   padding: 0 1.5rem;
   transition: all 0.2s ease-in;
-  /* background-color: blueviolet; */
-
-  /* overflow: hidden; */
 }
 
 .gallery-slide-down {
   transform: translateY(44.48rem);
-  /* transform: translateY(38.48rem); */
 }
 
 .gallery-heading {
@@ -39,14 +33,11 @@
   background-position: center center;
   background-repeat: no-repeat;
   overflow: hidden;
-
-  /* filter: brightness(80%); */
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .gallery-item:hover {
-  /* filter: brightness(100%); */
   transform: scale(1.01);
 }
 
