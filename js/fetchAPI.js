@@ -11,7 +11,6 @@ const headingEl = document.querySelector(".gallery-heading");
 
 // returns documents location with added query parameter as a string (gets website url )
 const baseUrl = document.URL;
-
 // gets query parameter from  websites url for search query (e.g., Japan, Norway, ...)
 const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
 
@@ -21,18 +20,17 @@ if (headingEl) {
   // headingEl.innerHTML = searchQuery;
   headingEl.innerHTML = "loading...";
 }
+
 // counter for class name for galleryItemContainer and categoriesItemContainer
 let itemNum = 1;
 
 // list where fetched data for index page gets stored so it can be stored on local storage
 let categoriesData = [];
 let galleryData = [];
-
 // gets data from session storage
 let sessionGalleryData = JSON.parse(
   sessionStorage.getItem(`galleryData${searchQuery}`)
 );
-
 let sessionCategoriesData = JSON.parse(
   sessionStorage.getItem("categoriesData")
 );
@@ -67,7 +65,6 @@ const displayCategoryImages = function (response, query) {
     itemNum++;
   });
 };
-
 // creates elements and displays fetched data (images) on gallery page
 const displayGalleryImages = function (response) {
   galleryData.push(response);
@@ -79,32 +76,30 @@ const displayGalleryImages = function (response) {
         <div class="gallery-item" title="${image.alt}" style="background-image: url(${image.src.large2x})"></div>
       </a>
     </figure>`;
+
     itemNum++;
   });
 };
 
-// shows categories and footer and hides loading text on index page
-const visibilityToggleCategories = function () {
-  categoriesGalleryEl.classList.toggle("hidden");
-  categoriesHeadingEl.classList.toggle("hidden");
+// shows categories/gallery and footer and hides loading text on index page
+const visibilityToggle = function (page) {
   footerEl.classList.toggle("hidden");
-};
 
-// shows gallery and footer and hides loading text on gallery page
-const visibilityToggleGallery = function () {
-  headingEl.innerHTML = `${searchQuery}`;
-  photoGalleryEl.classList.toggle("hidden");
-  footerEl.classList.toggle("hidden");
+  if (page === 0) {
+    categoriesGalleryEl.classList.toggle("hidden");
+    categoriesHeadingEl.classList.toggle("hidden");
+  } else if (page === 1) {
+    headingEl.innerHTML = `${searchQuery}`;
+    photoGalleryEl.classList.toggle("hidden");
+  }
 };
 
 // on load function
 // idex page = 0  gallery page = 1
-// if its 0 creates categories list and fetches data for it
-// if its 1  fetches data for that category(searchQuery)
 async function switcher(page) {
   // index page
   if (page === 0) {
-    // checks if data exists on local storage and if its same as categories list
+    // checks if data exists on session storage and if its same as categories list
     if (
       sessionCategoriesData &&
       sessionCategoriesData.length === categoriesList.length
@@ -113,41 +108,38 @@ async function switcher(page) {
         displayCategoryImages(sessionCategoriesData[i], categoriesList[i]);
       }
 
-      visibilityToggleCategories();
+      visibilityToggle(page);
 
       // if it doesn't exist or its not same as categories list, deletes it and creates a new one
     } else {
-      // sessionStorage.clear();
       sessionStorage.removeItem(`categoriesData`);
       for (let i = 0; i < categoriesList.length; i++) {
         await SearchPhotos(categoriesList[i], 1);
       }
-      // stores list(with fetched data for index page) to local storage
+      // stores list(with fetched data for index page) to session storage
       sessionStorage.setItem(`categoriesData`, JSON.stringify(categoriesData));
 
-      visibilityToggleCategories();
+      visibilityToggle(page);
     }
+
     // gallery page
   } else if (page === 1) {
-    // headingEl.innerHTML = "loading...";
-    // await SearchPhotos(searchQuery, 15);
-    // headingEl.innerHTML = searchQuery;
-    // loadGalleryData();
-
     if (sessionGalleryData) {
       for (let i = 0; i < sessionGalleryData.length; i++) {
         displayGalleryImages(sessionGalleryData[i]);
       }
 
-      visibilityToggleGallery();
+      visibilityToggle(page);
     } else {
       sessionStorage.removeItem(`galleryData${searchQuery}`);
+
       await SearchPhotos(searchQuery, 15);
       sessionStorage.setItem(
         `galleryData${searchQuery}`,
         JSON.stringify(galleryData)
       );
-      visibilityToggleGallery();
+
+      visibilityToggle(page);
     }
   }
 }
@@ -166,9 +158,6 @@ async function SearchPhotos(query, quantity) {
     }
   );
   const response = await data.json();
-  // quantity === 1
-  //   ? displayCategoryImages(response, query)
-  //   : galleryData.push(response);
 
   // quantity of images to fetch
   quantity === 1
