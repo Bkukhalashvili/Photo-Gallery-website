@@ -14,13 +14,6 @@ const baseUrl = document.URL;
 // gets query parameter from  websites url for search query (e.g., Japan, Norway, ...)
 const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
 
-// assign query parameter from url to gallery page title and heading
-if (headingEl) {
-  galleryPageTitle.innerHTML += ` ${searchQuery}`;
-  // headingEl.innerHTML = searchQuery;
-  headingEl.innerHTML = "loading...";
-}
-
 // counter for class name for galleryItemContainer and categoriesItemContainer
 let itemNum = 1;
 
@@ -124,6 +117,9 @@ async function switcher(page) {
 
     // gallery page
   } else if (page === 1) {
+    // assign query parameter from url to gallery page title
+    galleryPageTitle.innerHTML += ` ${searchQuery}`;
+
     if (sessionGalleryData) {
       for (let i = 0; i < sessionGalleryData.length; i++) {
         displayGalleryImages(sessionGalleryData[i]);
