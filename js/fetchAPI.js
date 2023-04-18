@@ -9,17 +9,15 @@ const photoGalleryEl = document.querySelector(".photo-gallery");
 const galleryPageTitle = document.querySelector("title");
 const headingEl = document.querySelector(".gallery-heading");
 
-// returns documents location with added query parameter as a string (gets website url )
+// gets website url which contains query parameter
 const baseUrl = document.URL;
 // gets query parameter from  websites url for search query (e.g., Japan, Norway, ...)
 const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
 
-// counter for class name for galleryItemContainer and categoriesItemContainer
-let itemNum = 1;
-
-// list where fetched data for index page gets stored so it can be stored on local storage
+// list where fetched data for index/gallery page gets stored so it can be stored on session storage
 let categoriesData = [];
 let galleryData = [];
+
 // gets data from session storage
 let sessionGalleryData = JSON.parse(
   sessionStorage.getItem(`galleryData${searchQuery}`)
@@ -41,9 +39,12 @@ let categoriesList = [
   "Denmark",
 ];
 
+// counter for class name for galleryItemContainer and categoriesItemContainer
+let itemNum = 1;
+
 // creates elements and displays fetched data (images) on index page
 const displayCategoryImages = function (response, query) {
-  // adds fetched data to fetched data list so it can be stored on local storage
+  // adds fetched data to fetched data list so it can be stored on session storage
   categoriesData.push(response);
 
   response.photos.forEach((image) => {
@@ -74,7 +75,7 @@ const displayGalleryImages = function (response) {
   });
 };
 
-// shows categories/gallery and footer and hides loading text on index page
+// shows categories/gallery and footer and hides loading text
 const visibilityToggle = function (page) {
   footerEl.classList.toggle("hidden");
 
