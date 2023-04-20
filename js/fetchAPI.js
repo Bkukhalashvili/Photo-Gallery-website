@@ -14,6 +14,9 @@ const baseUrl = document.URL;
 // gets query parameter from  websites url for search query (e.g., Japan, Norway, ...)
 const searchQuery = baseUrl.slice(baseUrl.indexOf("?") + 1);
 
+// error count from SearchPhotos function
+let errors = 0;
+
 // list where fetched data for index/gallery page gets stored so it can be stored on session storage
 let categoriesData = [];
 let galleryData = [];
@@ -77,14 +80,14 @@ const displayGalleryImages = function (response) {
 
 // shows categories/gallery and footer and hides loading text
 const visibilityToggle = function (page) {
-  footerEl.classList.toggle("hidden");
-
-  if (page === 0) {
+  if (page === 0 && errors === 0) {
     categoriesGalleryEl.classList.toggle("hidden");
     categoriesHeadingEl.classList.toggle("hidden");
-  } else if (page === 1) {
+    footerEl.classList.toggle("hidden");
+  } else if (page === 1 && errors === 0) {
     headingEl.innerHTML = `${searchQuery}`;
     photoGalleryEl.classList.toggle("hidden");
+    footerEl.classList.toggle("hidden");
   }
 };
 
@@ -121,7 +124,7 @@ async function switcher(page) {
     // assign query parameter from url to gallery page title
     galleryPageTitle.innerHTML += ` ${searchQuery}`;
 
-    if (sessionGalleryData) {
+    if (sessionGalleryData && sessionGalleryData.length >= 1) {
       for (let i = 0; i < sessionGalleryData.length; i++) {
         displayGalleryImages(sessionGalleryData[i]);
       }
@@ -141,23 +144,30 @@ async function switcher(page) {
   }
 }
 
-// gets data
 async function SearchPhotos(query, quantity) {
-  console.log("fetch");
-  const data = await fetch(
-    `https://api.pexels.com/v1/search?query=${query}&per_page=${quantity}`,
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        Authorization: apiKey,
-      },
-    }
-  );
-  const response = await data.json();
+  try {
+    console.log("fetch");
+    const data = await fetch(
+      `https://api.pexels.com/v1/search?query=${query}&per_page=${quantity}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          Authorization: apiKey,
+        },
+      }
+    );
+    const response = await data.json();
 
-  // quantity of images to fetch
-  quantity === 1
-    ? displayCategoryImages(response, query)
-    : displayGalleryImages(response);
+    // quantity of images to fetch
+    quantity === 1
+      ? displayCategoryImages(response, query)
+      : displayGalleryImages(response);
+  } catch (error) {
+    errors++;
+    headingEl
+      ? (headingEl.innerHTML = "ERROR")
+      : (categoriesHeadingEl.innerHTML = "ERROR");
+    console.error(error);
+  }
 }
