@@ -7,7 +7,7 @@ const categoriesHeadingEl = document.querySelector(".categories-heading");
 // gallery page
 const photoGalleryEl = document.querySelector(".photo-gallery");
 const galleryPageTitle = document.querySelector("title");
-const headingEl = document.querySelector(".gallery-heading");
+const galleryHeadingEl = document.querySelector(".gallery-heading");
 
 // gets website url which contains query parameter
 const baseUrl = document.URL;
@@ -85,7 +85,7 @@ const visibilityToggle = function (page) {
     categoriesHeadingEl.classList.toggle("hidden");
     footerEl.classList.toggle("hidden");
   } else if (page === 1 && errors === 0) {
-    headingEl.innerHTML = `${searchQuery}`;
+    galleryHeadingEl.innerHTML = `${searchQuery}`;
     photoGalleryEl.classList.toggle("hidden");
     footerEl.classList.toggle("hidden");
   }
@@ -165,8 +165,8 @@ async function SearchPhotos(query, quantity) {
       : displayGalleryImages(response);
   } catch (error) {
     errors++;
-    headingEl
-      ? (headingEl.innerHTML = "ERROR")
+    galleryHeadingEl
+      ? (galleryHeadingEl.innerHTML = "ERROR")
       : (categoriesHeadingEl.innerHTML = "ERROR");
     console.error(error);
   }
