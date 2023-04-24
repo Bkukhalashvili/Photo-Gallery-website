@@ -146,7 +146,6 @@ async function switcher(page) {
 
 async function SearchPhotos(query, quantity) {
   try {
-    console.log("fetch");
     const data = await fetch(
       `https://api.pexels.com/v1/search?query=${query}&per_page=${quantity}`,
       {
