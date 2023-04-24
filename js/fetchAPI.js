@@ -1,4 +1,4 @@
-const apiKey = config.API_KEY;
+const apiKey = API_KEY.API_KEY;
 
 // index page
 const categoriesGalleryEl = document.querySelector(".categories-gallery");
