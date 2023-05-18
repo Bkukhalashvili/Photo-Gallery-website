@@ -55,7 +55,10 @@ const displayCategoryImages = function (response, query) {
     <figure class="categories-item-container item${itemNum}">
       <a class="categories-item-link" href="gallery.html?${query}">
         <p class="categories-item-title"> ${query} </p>
-        <div class="categories-item" title="${image.alt}" style="background-image: url(${image.src.large2x})"></div>
+        <div class="categories-item" title="${image.alt}" style="background-image: -webkit-image-set(
+          url(${image.src.large}) 1x,
+          url(${image.src.large2x}) 2x)">
+        </div>
       </a>
     </figure>`;
 
@@ -70,7 +73,10 @@ const displayGalleryImages = function (response) {
     photoGalleryEl.innerHTML += `
     <figure class="gallery-item-container item${itemNum}">
       <a class="gallery-item-link" href="${image.url}" target="_blank">
-        <div class="gallery-item" title="${image.alt}" style="background-image: url(${image.src.large2x})"></div>
+        <div class="gallery-item" title="${image.alt}" style="background-image: -webkit-image-set(
+          url(${image.src.large}) 1x,
+          url(${image.src.large2x}) 2x)">
+        </div>
       </a>
     </figure>`;
 
